@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'flicker_core',
 ]
 
+AUTH_USER_MODEL = 'flicker_core.FlickerUser'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

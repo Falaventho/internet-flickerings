@@ -1,3 +1,12 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
-# Register your models here.
+from .forms import FlickerUserCreationForm, FlickerUserChangeForm
+from .models import FlickerUser
+
+
+class FlickerUserAdmin(UserAdmin):
+    add_form = FlickerUserCreationForm
+    form = FlickerUserChangeForm
+    model = FlickerUser
+    list_display = ['email', 'username', ]

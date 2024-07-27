@@ -15,6 +15,7 @@ RUN python -m venv /py && \
     apk update && \
     apk add --virtual build-deps gcc python3-dev musl-dev && \
     apk add postgresql-dev && \
+    apk add bash && \
     /py/bin/pip install -r /requirements.txt && \
     apk del build-deps && \
     adduser -D -H app && \
@@ -22,7 +23,7 @@ RUN python -m venv /py && \
     mkdir -p /vol/web/media && \
     chown -R app:app /vol && \
     chmod -R 755 /vol && \
-    chmod +x /scripts/*
+    chmod +x /scripts/entrypoint.sh 
 
 ENV PATH="/scripts:/py/bin:$PATH"
 
