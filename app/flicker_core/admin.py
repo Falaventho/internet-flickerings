@@ -10,3 +10,6 @@ class FlickerUserAdmin(UserAdmin):
     form = FlickerUserChangeForm
     model = FlickerUser
     list_display = ['email', 'username', ]
+
+
+admin.site.register(FlickerUser, FlickerUserAdmin)
