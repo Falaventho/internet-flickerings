@@ -39,6 +39,7 @@ class MediaObject(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     thumbnail_url = models.URLField()
+    content_url = models.URLField()
     release_year = models.IntegerField()
     runtime = models.IntegerField()
     rating = models.ForeignKey(MediaRating, on_delete=models.PROTECT)
