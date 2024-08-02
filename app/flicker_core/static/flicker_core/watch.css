@@ -15,15 +15,35 @@
 
 .overlay-topbar {
   position: fixed;
-  top: 0;
+  top: 10px;
 }
 
 .overlay-bottombar {
   position: fixed;
   bottom: 0;
+  width: 100%;
+}
+
+.overlay-button {
+  transition: ease 150ms;
+  width: 15% !important;
 }
 
 .overlay-button:hover {
   background: transparent !important;
   color: white !important;
+  transform: scale(1.2);
+}
+
+.bar-third {
+  width: 33% !important;
+}
+
+.title {
+  width: 100% !important;
+  user-select: none;
+}
+
+#back-btn {
+  width: 75px !important;
 }
