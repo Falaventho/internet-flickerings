@@ -70,5 +70,6 @@ class CastCrewMember(models.Model):
 
 
 class Credited(models.Model):
-    media = models.ForeignKey(MediaObject, on_delete=CASCADE)
-    credited_member = models.ForeignKey(CastCrewMember, on_delete=CASCADE)
+    media = models.ForeignKey(MediaObject, on_delete=models.CASCADE)
+    credited_member = models.ForeignKey(
+        CastCrewMember, on_delete=models.CASCADE)

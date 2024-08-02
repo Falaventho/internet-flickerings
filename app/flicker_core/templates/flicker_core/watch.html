@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let video = document.getElementById("video-object");
+      let btn = document.getElementById("play-btn");
+
+      function playPause() {
+        if (video.paused) {
+          video.play();
+          btn.innerHTML = "&#x23F8;";
+        } else {
+          video.pause();
+          btn.innerHTML = "&#x23F5;";
+        }
+      }
+    </script>
+
+    <video autoplay id="video-object">
+      <source src="{{ content_url }}" />
+    </video>
+
+    <div class="overlay">
+      <h1>{{ title }}</h1>
+
+      <button
+        class="w3-button w3-circle"
+        style="color: transparent"
+        id="play-btn"
+        onclick="playPause()"
+      >
+        &#x23F8;
+      </button>
+    </div>
+  </body>
+</html>

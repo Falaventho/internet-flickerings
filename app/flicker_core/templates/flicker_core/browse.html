@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="{% static 'flicker_core/global.css' %}" />
+  </head>
+  <body class="w3-black">
+    <!-- TOPBAR: home, genres/types, search, account -->
+    <div class="topbar w3-bar w3-black w3-xlarge">
+      <a
+        href="#"
+        class="w3-bar-item w3-button w3-text-deep-orange w3-hover-black w3-border-black w3-hover-border-white w3-hover-text-deep-orange link homelink"
+        ><b>INTFLX</b></a
+      >
+      <a
+        href="#"
+        class="w3-bar-item w3-button w3-hover-black w3-hover-text-gray link movielink"
+        >Movies</a
+      >
+      <a
+        href="#"
+        class="w3-bar-item w3-button w3-hover-black w3-hover-text-gray link showlink"
+        >Shows</a
+      >
+      <a
+        href="#"
+        class="w3-bar-item w3-button w3-hover-black w3-hover-text-gray link searchlink"
+        >Search</a
+      >
+      <a
+        href="#"
+        class="w3-bar-item w3-button w3-hover-black w3-hover-text-gray link accountlink w3-right"
+        >Account</a
+      >
+    </div>
+    <!-- Array of movies header - list, header - list, etc. -->
+
+    <div class="w3-container">
+      <h2>Section Header</h2>
+
+      <div class="w3-container w3-cell-row w3-left-align">
+        <div class="w3-cell w3-padding-small" style="width: 12%">
+          <img
+            src="https://wallpapers.com/images/hd/please-stand-by-color-bars-5yxsjpb2e11caead.jpg"
+            alt=""
+            style="width: 100%"
+          />
+        </div>
+
+        <div class="w3-cell w3-padding-small" style="width: 12%">
+          <img
+            src="https://wallpapers.com/images/hd/please-stand-by-color-bars-5yxsjpb2e11caead.jpg"
+            alt=""
+            style="width: 100%"
+          />
+        </div>
+
+        <div class="w3-cell"><p>&nbsp;</p></div>
+        <!-- TODO This makes the alignment work for now, fix properly after implementing actual data-driven media cards -->
+      </div>
+    </div>
+
+    <!-- Lazy loading/dynamic scroll loading-->
+    <!-- Copyright notice -->
+  </body>
+</html>
