@@ -113,3 +113,4 @@ cython_debug/
 
 # Hefty static files
 *.mp4
+/flicker_files/*

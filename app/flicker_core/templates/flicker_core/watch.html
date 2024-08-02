@@ -14,7 +14,7 @@
       crossorigin="anonymous"
     ></script>
 
-    {% with 'flicker_core/'|add:content_uri as content_path %}
+    {% with 'flicker_files/'|add:content_uri as content_path %}
     <video id="video-player" class="player" onclick="playPause();">
       <source src="{% static content_path %}" />
     </video>

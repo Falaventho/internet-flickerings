@@ -69,7 +69,7 @@
         <!-- Spacer-->
         <div class="w3-cell w3-padding-small" style="width: 12%">
           <a href="/watch/{{card.id}}">
-            {% with 'flicker_core/'|add:card.thumbnail_uri as thumbnail_path %}
+            {% with 'flicker_files/'|add:card.thumbnail_uri as thumbnail_path %}
             <img
               src="{% static thumbnail_path %}"
               alt="showing"
