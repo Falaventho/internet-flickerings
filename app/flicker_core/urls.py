@@ -6,5 +6,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
     path('browse/', views.browse),
-    path('watch/<str:media>', views.watch)
+    path('watch/<str:media>', views.watch),
+    path('devwatch/', views.devwatch)
 ]

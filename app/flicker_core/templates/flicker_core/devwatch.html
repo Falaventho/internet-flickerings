@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'flicker_core/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'flicker_core/watch.css' %}" />
+  </head>
+  <body>
+    <video id="video-player" class="player">
+      <source src="{% static 'flicker_core/testvideo.mp4' %}" />
+    </video>
+
+    <div class="overlay">
+      <div class="overlay-topbar w3-bar">
+        <button
+          class="overlay-button w3-bar-item w3-button w3-transparent w3-xxxlarge"
+        >
+          &#x2190;
+        </button>
+        <h1 class="title w3-bar-item">Test Title</h1>
+      </div>
+
+      <div class="overlay-bottombar">
+        <button
+          class="overlay-button w3-bar-item w3-button w3-round-xlarge w3-transparent w3-xxxlarge"
+          id="play-btn"
+          onclick="playPause();"
+        >
+          &#x23F5;
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let video = document.getElementById("video-player");
+      let btn = document.getElementById("play-btn");
+
+      function playPause() {
+        if (video.paused) {
+          video.play();
+          btn.innerHTML = "&#x23F8;";
+        } else {
+          video.pause();
+          btn.innerHTML = "&#x23F5;";
+        }
+      }
+    </script>
+  </body>
+</html>

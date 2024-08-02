@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import FlickerUserCreationForm, FlickerUserChangeForm
-from .models import FlickerUser
+from .models import FlickerUser, MediaObject
 
 
 class FlickerUserAdmin(UserAdmin):
@@ -13,3 +13,4 @@ class FlickerUserAdmin(UserAdmin):
 
 
 admin.site.register(FlickerUser, FlickerUserAdmin)
+admin.site.register(MediaObject)

@@ -17,3 +17,7 @@ def watch(request, media_id):
         'title': media_object.title,
         'content_url': media_object.content_url,
     })
+
+
+def devwatch(request):
+    return render(request, 'flicker_core/devwatch.html')
