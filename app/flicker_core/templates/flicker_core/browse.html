@@ -6,33 +6,30 @@
     <title>Document</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'flicker_core/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'flicker_core/browse.css' %}" />
   </head>
   <body class="w3-black">
     <!-- TOPBAR: home, genres/types, search, account -->
     <div class="topbar w3-bar w3-black w3-xlarge">
       <a
         href="#"
-        class="w3-bar-item w3-button w3-text-deep-orange w3-hover-black w3-border-black w3-hover-border-white w3-hover-text-deep-orange link homelink"
+        class="w3-bar-item w3-button w3-text-deep-orange w3-hover-black w3-border-black w3-hover-border-white w3-hover-text-deep-orange navlink homelink"
         ><b>INTFLX</b></a
       >
-      <a
-        href="#"
-        class="w3-bar-item w3-button w3-hover-black w3-hover-text-gray link movielink"
+      <a href="#" class="w3-bar-item w3-button w3-hover-black navlink movielink"
         >Movies</a
       >
-      <a
-        href="#"
-        class="w3-bar-item w3-button w3-hover-black w3-hover-text-gray link showlink"
+      <a href="#" class="w3-bar-item w3-button w3-hover-black navlink showlink"
         >Shows</a
       >
       <a
         href="#"
-        class="w3-bar-item w3-button w3-hover-black w3-hover-text-gray link searchlink"
+        class="w3-bar-item w3-button w3-hover-black navlink searchlink"
         >Search</a
       >
       <a
         href="#"
-        class="w3-bar-item w3-button w3-hover-black w3-hover-text-gray link accountlink w3-right"
+        class="w3-bar-item w3-button w3-hover-black navlink accountlink w3-right"
         >Account</a
       >
     </div>
@@ -59,10 +56,35 @@
             style="width: 100%"
           />
         </div>
-
         <div class="w3-cell"><p>&nbsp;</p></div>
         <!-- TODO This makes the alignment work for now, fix properly after implementing actual data-driven media cards -->
       </div>
+
+      {% for section in sections %}
+
+      <h2>{{ section.title }}</h2>
+
+      <div class="w3-container w3-cell-row w3-left-align">
+        {% for card in section.cards %}
+        <!-- Spacer-->
+        <div class="w3-cell w3-padding-small" style="width: 12%">
+          <a href="/watch/{{card.id}}">
+            {% with 'flicker_core/'|add:card.thumbnail_uri as thumbnail_path %}
+            <img
+              src="{% static thumbnail_path %}"
+              alt="showing"
+              style="width: 100%"
+            />
+            {% endwith %}
+          </a>
+        </div>
+        <!--Spacer-->
+        {% endfor %}
+        <div class="w3-cell"><p>&nbsp;</p></div>
+        <!-- TODO This makes the alignment work for now, fix properly after implementing actual data-driven media cards -->
+      </div>
+
+      {% endfor %}
     </div>
 
     <!-- Lazy loading/dynamic scroll loading-->

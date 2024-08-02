@@ -38,15 +38,19 @@ class MediaObject(models.Model):
 
     title = models.CharField(max_length=255)
     description = models.TextField()
-    thumbnail_url = models.URLField()
-    content_url = models.URLField()
+    thumbnail_uri = models.CharField(max_length=255)
+    content_uri = models.CharField(max_length=255)
     release_year = models.IntegerField()
     runtime = models.IntegerField()
-    rating = models.ForeignKey(MediaRating, on_delete=models.PROTECT)
-    season = models.ForeignKey(Season, on_delete=models.PROTECT)
+    rating = models.ForeignKey(
+        MediaRating, on_delete=models.PROTECT, blank=True, null=True)
+    season = models.ForeignKey(
+        Season, on_delete=models.PROTECT, blank=True, null=True)
 
     def __str__(self):
         return self.title
+
+    # ? Runtime is derivable, perhaps derive it?
 
 
 class Genre(models.Model):
