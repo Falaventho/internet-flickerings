@@ -4,8 +4,6 @@ stages:
 
 build:
   stage: build
-  only:
-#    - main
   image: docker
   services:
     - docker:dind
@@ -16,10 +14,8 @@ build:
     - cp .env.sample .env
     - docker compose build
   
-  test:
-    stage: test
-  only:
-#    - main
+test:
+  stage: test
   image: docker:latest
   services:
     - docker:dind
