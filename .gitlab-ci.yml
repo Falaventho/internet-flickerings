@@ -24,10 +24,10 @@ test:
     - sleep 30
     - docker logs flicker-app 2> flicker-app.log
     - docker compose down
-    - (! grep "FAIL" clifker-app.log)
+    - (! grep "FAIL" flicker-app.log)
   artifacts:
     paths:
-      - app.log
+      - flicker-app.log
     when: always
 
 sast:
