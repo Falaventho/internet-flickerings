@@ -7,9 +7,6 @@ build:
   image: docker:latest
   services:
     - docker:dind
-  variables:
-    DOCKER_TLS_CERTDIR: ""
-    DOCKER_HOST: "tcp://docker:2375"
   script:
     - cp .env.sample .env
     - docker compose build
@@ -20,8 +17,6 @@ test:
   services:
     - docker:dind
   variables:
-    DOCKER_TLS_CERTDIR: ""
-    DOCKER_HOST: "tcp://docker:2375"
   script:
     - cp .env.sample .env
     - echo "TEST=1" >> .env
