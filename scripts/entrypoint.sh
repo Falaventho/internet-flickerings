@@ -5,9 +5,8 @@ set -e
 python manage.py wait_for_db
 python manage.py collectstatic --noinput
 python manage.py migrate
-
 echo "TEST_FLAG set to '$TEST_FLAG'"
-if [ "$TEST_FLAG" == "true"]
+if [ "$TEST_FLAG" = "true"]
 then
     echo "Running tests"
     python manage.py test
