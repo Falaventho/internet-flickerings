@@ -10,7 +10,6 @@ services:
       - static-data:/vol/web
     environment:
       - SECRET_KEY=${SECRET_KEY}
-      - DEBUG=${DEBUG}
       - DB_HOST=db
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}

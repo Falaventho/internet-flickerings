@@ -10,7 +10,7 @@ services:
       - ./data/web:/vol/web
     environment:
       - SECRET_KEY=${SECRET_KEY:-devsecretkey}
-      - DEBUG=${DEBUG:-false}
+      - DEBUG=${DEBUG:-0}
       - DB_HOST=db
       - DB_NAME=${DB_NAME:-devdb}
       - DB_USER=${DB_USER:-devuser}
