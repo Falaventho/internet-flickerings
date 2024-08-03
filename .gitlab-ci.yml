@@ -22,9 +22,9 @@ test:
     - echo "TEST=1" >> .env
     - docker compose up -d
     - sleep 30
-    - docker logs app 2> app.log
+    - docker logs flicker-app 2> flicker-app.log
     - docker compose down
-    - (! grep "FAIL" app.log)
+    - (! grep "FAIL" clifker-app.log)
   artifacts:
     paths:
       - app.log
