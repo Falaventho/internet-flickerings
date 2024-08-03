@@ -15,7 +15,7 @@ services:
       - DB_NAME=${DB_NAME:-devdb}
       - DB_USER=${DB_USER:-devuser}
       - DB_PASS=${DB_PASS:-changeme}
-      - TEST=${TEST:false}
+      - TEST=${TEST:-false}
     depends_on:
       - db
 
