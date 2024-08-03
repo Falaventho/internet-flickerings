@@ -4,16 +4,17 @@ stages:
 
 build:
   stage: build
-  image: docker
+  image: docker:latest
   services:
     - docker:dind
   variables:
     DOCKER_TLS_CERTDIR: ""
     DOCKER_HOST: "tcp://docker:2375"
   script:
+    - unset DOCKER_HOST
     - cp .env.sample .env
     - docker compose build
-  
+
 test:
   stage: test
   image: docker:latest
@@ -24,7 +25,7 @@ test:
     DOCKER_HOST: "tcp://docker:2375"
   script:
     - cp .env.sample .env
-    - echo "TEST=true" >> .env
+    - echo "TEST=1" >> .env
     - docker compose up -d
     - sleep 30
     - docker logs app 2> app.log
@@ -34,8 +35,8 @@ test:
     paths:
       - app.log
     when: always
-  
+
 sast:
   stage: test
 include:
-  - template: Security/SAST.gitlab-ci.yml 
+  - template: Security/SAST.gitlab-ci.yml

@@ -112,5 +112,5 @@ dmypy.json
 cython_debug/
 
 # Hefty static files
-*.mp4
 flicker_files/
+.static-data/
