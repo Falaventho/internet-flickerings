@@ -1,0 +1,45 @@
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  only:
+#    - main
+  image: docker
+  services:
+    - docker:dind
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_HOST: "tcp://docker:2375"
+  script:
+    - cp .env.sample .env
+    - docker compose build
+  
+  test:
+    stage: test
+  only:
+#    - main
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_HOST: "tcp://docker:2375"
+  script:
+    - cp .env.sample .env
+    - echo "TEST=true" >> .env
+    - docker compose up -d
+    - sleep 30
+    - docker logs app 2> app.log
+    - docker compose down
+    - (! grep "FAIL" app.log)
+  artifacts:
+    paths:
+      - app.log
+    when: always
+  
+sast:
+  stage: test
+include:
+  - template: Security/SAST.gitlab-ci.yml 
