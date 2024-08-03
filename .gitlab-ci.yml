@@ -21,7 +21,7 @@ test:
   variables:
   script:
     - cp .env.sample .env
-    - echo "TEST=1" >> .env
+    - echo -e "\nTEST_FLAG=true" >> .env
     - docker compose up -d
     - sleep 20
     - docker logs flicker-app 1> flicker-app.log
