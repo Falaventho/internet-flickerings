@@ -6,6 +6,7 @@ python manage.py wait_for_db
 python manage.py collectstatic --noinput
 python manage.py migrate
 
+echo "TEST variable set to '$TEST'"
 if [ "$TEST" == "1"]
 then
     echo "Running tests"
