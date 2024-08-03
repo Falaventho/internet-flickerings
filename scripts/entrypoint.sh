@@ -11,7 +11,7 @@ then
     echo "Running tests"
     python manage.py test
 else
-    echo "Tests skipped"
+    echo "Test flag set to false or unset, tests skipped"
 fi
 
 uwsgi --socket :9000 --workers 4 --master --enable-threads --module app.wsgi
