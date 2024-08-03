@@ -18,7 +18,6 @@ test:
   image: docker:latest
   services:
     - docker:dind
-  variables:
   script:
     - cp .env.sample .env
     - echo -e "\nTEST_FLAG=true" >> .env
