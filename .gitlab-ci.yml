@@ -22,7 +22,9 @@ test:
     - echo "TEST=1" >> .env
     - docker compose up -d
     - sleep 30
-    - docker logs flicker-app 2> flicker-app.log
+    - docker logs flicker-app 1> flicker-app.log
+    - echo -e "\n\n\n^^^  STDOUT  ^^^\n\nvvv  STDERR  vvv\n\n\n" >> flicker-app.log
+    - docker logs flicker-app 2>> flicker-app.log
     - docker compose down
     - (! grep "FAIL" flicker-app.log)
   artifacts:
