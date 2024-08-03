@@ -4,6 +4,8 @@ stages:
 
 build:
   stage: build
+  only:
+    - main
   image: docker:latest
   services:
     - docker:dind
