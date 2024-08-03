@@ -29,4 +29,4 @@ ENV PATH="/scripts:/py/bin:$PATH"
 
 USER app
 
-CMD entrypoint.sh
+CMD run.sh
