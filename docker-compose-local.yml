@@ -1,0 +1,28 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: flicker-app
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/app
+      - ./data/web:/vol/web
+    environment:
+      - SECRET_KEY=${SECRET_KEY:-devsecretkey}
+      - DEBUG=${DEBUG:-0}
+      - DB_HOST=db
+      - DB_NAME=${DB_NAME:-devdb}
+      - DB_USER=${DB_USER:-devuser}
+      - DB_PASS=${DB_PASS:-changeme}
+      - TEST_FLAG=${TEST_FLAG:-false}
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16-alpine
+    container_name: flicker-db
+    environment:
+      - POSTGRES_DB=${DB_NAME:-devdb}
+      - POSTGRES_USER=${DB_USER:-devuser}
+      - POSTGRES_PASSWORD=${DB_PASS:-changeme}

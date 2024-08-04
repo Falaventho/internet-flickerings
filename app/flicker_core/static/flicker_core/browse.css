@@ -1,0 +1,7 @@
+.navlink {
+  transition: ease 100ms;
+}
+
+.navlink:hover {
+  transform: scale(1.1);
+}

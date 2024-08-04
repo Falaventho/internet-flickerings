@@ -59,6 +59,7 @@ cover/
 *.log
 local_settings.py
 local_data/
+data/
 
 
 # PyBuilder
@@ -109,3 +110,7 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Hefty static files
+flicker_files/
+.static-data/
