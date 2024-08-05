@@ -26,9 +26,9 @@ docker compose up
 
 <br>
 
-❗ Note: The container for nginx binds to port 80. If you have another service bound to port 80, nginx will not bind appropriately and will be inaccessible. To resolve this, either stop all other services bound to port 80 before running the command in step 3 or change the first proxy port in [docker-compose.yml](docker-compose.yml) &nbsp;(the 80 in '- 80:8000') to another free port. If you choose to change the ports, the above link to the web application will require an ammended address with the port number appended in the form 'ht<span>tp://127.0.0.1:\<port>'.
+❗ Note: The container for nginx binds to port 80. If you have another service bound to port 80, nginx will not bind appropriately and will be inaccessible. To resolve this, either stop all other services bound to port 80 before running the command in step 3 or change the first proxy port in [docker-compose.yml](docker-compose.yml) &nbsp;(the 80 in '- 80:8000') to another free port. If you choose to change the ports, the above link to the web application will require an ammended address with the port number appended in the form 'http://127.0.0.1:\<port>'.
 
-For example, if changing the exposed port from 80 to 5947, (making the docker-compose file read '- 5947:8000' under proxy->ports) the web application would be accessed at 'ht<span>tp://127.0.0.1:5947'
+For example, if changing the exposed port from 80 to 5947, (making the docker-compose file read '- 5947:8000' under proxy->ports) the web application would be accessed at 'http://127.0.0.1:5947'
 
 ## Project Roadmap
 
