@@ -16,6 +16,7 @@ services:
       - DB_USER=${DB_USER:-devuser}
       - DB_PASS=${DB_PASS:-changeme}
       - TEST_FLAG=${TEST_FLAG:-false}
+      - LOCAL_SERV=${LOCAL_SERV:-true}
     depends_on:
       - db
 

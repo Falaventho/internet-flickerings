@@ -20,8 +20,10 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('', include('flicker_core.urls'))
+    path('', include('flicker_core.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(
