@@ -9,8 +9,14 @@ def home(request):
 
 def browse(request):
     example_cards = MediaObject.objects.all()
+
+    # ? recents cleanup firing on browse seems more reasonable than on watch, review
     recent_ids = request.session.get('recents', [])
+    recent_ids = recent_ids[:10]
+    request.session['recents'] = recent_ids
+
     recent_cards = MediaObject.objects.filter(id__in=recent_ids)
+    recent_cards = list(reversed(recent_cards))
     sections = [
         {
             "title": "Example Section",
