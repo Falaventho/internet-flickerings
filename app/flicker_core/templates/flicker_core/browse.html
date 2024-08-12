@@ -40,7 +40,7 @@
 
       <div class="w3-container w3-cell-row w3-left-align">
         <div class="w3-cell w3-padding-small" style="width: 12%">
-          <a href="/devwatch">
+          <a href="#">
             <img
               src="https://wallpapers.com/images/hd/please-stand-by-color-bars-5yxsjpb2e11caead.jpg"
               alt=""
@@ -69,7 +69,7 @@
         {% for card in section.cards %}
         <!-- Spacer-->
         <div class="w3-cell w3-padding-small" style="width: 12%">
-          <a href="/watch/{{card.id}}">
+          <a href="{% url 'watch' card.id %}">
             {% with 'flicker_files/'|add:card.thumbnail_uri as thumbnail_path %}
             <img
               src="{% static thumbnail_path %}"

@@ -4,7 +4,7 @@ from flicker_core.models import MediaObject
 
 # Create your views here.
 def home(request):
-    return redirect('/browse/')
+    return redirect('browse')
 
 
 def browse(request):
@@ -24,7 +24,3 @@ def watch(request, media_id):
         'title': media_object.title,
         'content_uri': media_object.content_uri,
     })
-
-
-def devwatch(request):
-    return render(request, 'flicker_core/devwatch.html')
