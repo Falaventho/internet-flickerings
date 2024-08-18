@@ -9,116 +9,87 @@
     <link rel="stylesheet" href="{% static 'flicker_core/watch.css' %}" />
   </head>
   <body class="w3-black" id="body">
-    <script
-      src="https://kit.fontawesome.com/18a00735d2.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/18a00735d2.js" crossorigin="anonymous"></script>
 
-    {% with 'flicker_files/'|add:content_uri as content_path %}
-    <video id="video-player" class="player" onclick="playPause();">
-      <source src="{% static content_path %}" />
-    </video>
+    {% with content_path='flicker_files/'|add:content_uri %}
+      <video id="video-player" class="player" onclick="playPause();">
+        <source src="{% static content_path %}" />
+      </video>
     {% endwith %}
 
     <div class="overlay">
       <div class="overlay-topbar w3-bar">
-        <button
-          class="overlay-button w3-bar-item w3-button w3-xxxlarge"
-          id="back-btn"
-          onclick="back();"
-        >
-          <i class="fa-solid fa-arrow-left w3-left w3-margin-left"></i>
-        </button>
+        <button class="overlay-button w3-bar-item w3-button w3-xxxlarge" id="back-btn" onclick="back();"><i class="fa-solid fa-arrow-left w3-left w3-margin-left"></i></button>
       </div>
 
       <div class="overlay-bottombar w3-bar">
         <div class="bar-third left-buttons w3-bar w3-bar-item">
-          <!-- play/pause button-->
-          <button
-            class="overlay-button w3-bar-item w3-button w3-round-xlarge w3-transparent w3-xxxlarge"
-            id="play-btn"
-            onclick="playPause();"
-          >
-            <i class="fa-solid fa-play"></i>
-          </button>
+          <!-- play/pause button -->
+          <button class="overlay-button w3-bar-item w3-button w3-round-xlarge w3-transparent w3-xxxlarge" id="play-btn" onclick="playPause();"><i class="fa-solid fa-play"></i></button>
 
-          <button
-            class="overlay-button w3-bar-item w3-button w3-transparent w3-xxxlarge w3-margin-left"
-            id="mute-btn"
-            onclick="toggleMute();"
-          >
-            <i class="fa-solid fa-volume-high"></i>
-          </button>
+          <button class="overlay-button w3-bar-item w3-button w3-transparent w3-xxxlarge w3-margin-left" id="mute-btn" onclick="toggleMute();"><i class="fa-solid fa-volume-high"></i></button>
         </div>
 
-        <!-- Mute 🔇: &#x1F507;   Speaker 🔈:&#x1F508;   One Wave 🔉: &#x1F509;   Three Wave 🔊: &#x1F50A;-->
+        <!-- Mute 🔇: &#x1F507; Speaker 🔈:&#x1F508; One Wave 🔉: &#x1F509; Three Wave 🔊: &#x1F50A; -->
 
         <div class="bar-third w3-bar-item">
           <h1 class="title w3-bar-item w3-xxlarge w3-center">{{ title }}</h1>
         </div>
 
-        <div
-          class="bar-third right-buttons w3-third w3-bar-item w3-right w3-margin-right"
-        >
-          <button
-            class="overlay-button w3-bar-item w3-button w3-round-xlarge w3-transparent w3-xxxlarge w3-right"
-            id="fullscreen-btn"
-            onclick="fullscreen();"
-          >
-            <i class="fa-solid fa-expand"></i>
-          </button>
+        <div class="bar-third right-buttons w3-third w3-bar-item w3-right w3-margin-right">
+          <button class="overlay-button w3-bar-item w3-button w3-round-xlarge w3-transparent w3-xxxlarge w3-right" id="fullscreen-btn" onclick="fullscreen();"><i class="fa-solid fa-expand"></i></button>
         </div>
       </div>
     </div>
 
     <script>
-      let video = document.getElementById("video-player");
-      let play_btn = document.getElementById("play-btn");
-      let mute_btn = document.getElementById("mute-btn");
-      let fullscreen_btn = document.getElementById("fullscreen-btn");
-      let body = document.getElementById("body");
-
-      let duration = video.duration;
-
+      let video = document.getElementById('video-player')
+      let play_btn = document.getElementById('play-btn')
+      let mute_btn = document.getElementById('mute-btn')
+      let fullscreen_btn = document.getElementById('fullscreen-btn')
+      let body = document.getElementById('body')
+      
+      let duration = video.duration
+      
       function playPause() {
         if (video.paused) {
-          video.play();
-          play_btn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+          video.play()
+          play_btn.innerHTML = '<i class="fa-solid fa-pause"></i>'
         } else {
-          video.pause();
-          play_btn.innerHTML = '<i class="fa-solid fa-play"></i>';
+          video.pause()
+          play_btn.innerHTML = '<i class="fa-solid fa-play"></i>'
         }
       }
-
+      
       function toggleMute() {
         if (video.muted) {
-          video.muted = false;
-          mute_btn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+          video.muted = false
+          mute_btn.innerHTML = '<i class="fa-solid fa-volume-high"></i>'
         } else {
-          video.muted = true;
-          mute_btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+          video.muted = true
+          mute_btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>'
         }
       }
-
+      
       function back() {
-        prev = document.referrer;
-        console.log(prev);
-        console.log(prev.split("/"));
-
+        prev = document.referrer
+        console.log(prev)
+        console.log(prev.split('/'))
+      
         // TODO replace this with a more robust check
-        if (prev.split("/")[3] == "browse") {
-          history.back();
+        if (prev.split('/')[3] == 'browse') {
+          history.back()
         } else {
           // TODO replace this with prod addr, -- pull from appropriate sources instead of hard-coding when CI ready
-          window.location.replace("http://127.0.0.1:8000/browse");
+          window.location.replace('http://127.0.0.1:8000/browse')
         }
       }
-
+      
       function fullscreen() {
         if (document.fullscreen) {
-          document.exitFullscreen();
+          document.exitFullscreen()
         } else {
-          body.requestFullscreen();
+          body.requestFullscreen()
         }
       }
     </script>

@@ -9,86 +9,66 @@
     <link rel="stylesheet" href="{% static 'flicker_core/browse.css' %}" />
   </head>
   <body class="w3-black">
-    <!-- TOPBAR: home, genres/types, search, account -->
+    {# TOPBAR: home, genres/types, search, account #}
     <div class="topbar w3-bar w3-black w3-xlarge">
-      <a
-        href="#"
-        class="w3-bar-item w3-button w3-text-deep-orange w3-hover-black w3-border-black w3-hover-border-white w3-hover-text-deep-orange homelink"
-        ><b>INTFLX</b></a
-      >
-      <a href="#" class="w3-bar-item w3-button w3-hover-black navlink movielink"
-        >Movies</a
-      >
-      <a href="#" class="w3-bar-item w3-button w3-hover-black navlink showlink"
-        >Shows</a
-      >
-      <a
-        href="#"
-        class="w3-bar-item w3-button w3-hover-black navlink searchlink"
-        >Search</a
-      >
-      <a
-        href="#"
-        class="w3-bar-item w3-button w3-hover-black navlink accountlink w3-right"
-        >Account</a
-      >
-    </div>
-    <!-- Array of movies header - list, header - list, etc. -->
+      <a href="#" class="w3-bar-item w3-button w3-text-deep-orange w3-hover-black w3-border-black w3-hover-border-white w3-hover-text-deep-orange homelink"><b>INTFLX</b></a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black navlink movielink">Movies</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black navlink showlink">Shows</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black navlink searchlink">Search</a>
 
+      {% if user.is_authenticated %}
+        {# <p>User: {{ user.get_username }}</p> #}
+        <form id="logout-form" method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="w3-bar-item w3-button w3-hover-black navlink logoutlink w3-right">Logout</button>
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}?next={{ request.path }}" class="w3-bar-item w3-button w3-hover-black navlink accountlink w3-right">Login</a>
+      {% endif %}
+
+      <a href="#" class="w3-bar-item w3-button w3-hover-black navlink accountlink w3-right">Account</a>
+    </div>
+    {# Array of movies header - list, header - list, etc. #}
     <div class="w3-container">
       <h2>Section Header</h2>
 
       <div class="w3-container w3-cell-row w3-left-align">
         <div class="w3-cell w3-padding-small" style="width: 12%">
-          <a href="#">
-            <img
-              src="https://wallpapers.com/images/hd/please-stand-by-color-bars-5yxsjpb2e11caead.jpg"
-              alt=""
-              style="width: 100%"
-            />
-          </a>
+          <a href="#"><img src="https://wallpapers.com/images/hd/please-stand-by-color-bars-5yxsjpb2e11caead.jpg" alt="" style="width: 100%" /></a>
         </div>
 
         <div class="w3-cell w3-padding-small" style="width: 12%">
-          <img
-            src="https://wallpapers.com/images/hd/please-stand-by-color-bars-5yxsjpb2e11caead.jpg"
-            alt=""
-            style="width: 100%"
-          />
+          <img src="https://wallpapers.com/images/hd/please-stand-by-color-bars-5yxsjpb2e11caead.jpg" alt="" style="width: 100%" />
         </div>
 
-        <div class="w3-cell"><p>&nbsp;</p></div>
-        <!-- TODO This makes the alignment work for now, fix properly after implementing actual data-driven media cards -->
+        <div class="w3-cell">
+          <p>&nbsp;</p>
+        </div>
+        {# TODO This makes the alignment work for now, fix properly after implementing actual data-driven media cards #}
       </div>
 
       {% for section in sections %}
+        <h2>{{ section.title }}</h2>
 
-      <h2>{{ section.title }}</h2>
-
-      <div class="w3-container w3-cell-row w3-left-align">
-        {% for card in section.cards %}
-        <!-- Spacer-->
-        <div class="w3-cell w3-padding-small" style="width: 12%">
-          <a href="{% url 'watch' card.id %}">
-            {% with 'flicker_files/'|add:card.thumbnail_uri as thumbnail_path %}
-            <img
-              src="{% static thumbnail_path %}"
-              alt="showing"
-              style="width: 100%"
-            />
-            {% endwith %}
-          </a>
+        <div class="w3-container w3-cell-row w3-left-align">
+          {% for card in section.cards %}
+            <div class="w3-cell w3-padding-small" style="width: 12%">
+              <a href="{% url 'watch' card.id %}">
+                {% with thumbnail_path='flicker_files/'|add:card.thumbnail_uri %}
+                  <img src="{% static thumbnail_path %}" alt="showing" style="width: 100%" />
+                {% endwith %}
+              </a>
+            </div>
+          {% endfor %}
+          <div class="w3-cell">
+            <p>&nbsp;</p>
+          </div>
+          {# TODO This makes the alignment work for now, fix properly after implementing actual data-driven media cards #}
         </div>
-        <!--Spacer-->
-        {% endfor %}
-        <div class="w3-cell"><p>&nbsp;</p></div>
-        <!-- TODO This makes the alignment work for now, fix properly after implementing actual data-driven media cards -->
-      </div>
-
       {% endfor %}
     </div>
 
-    <!-- Lazy loading/dynamic scroll loading-->
-    <!-- Copyright notice -->
+    {# Lazy loading/dynamic scroll loading in future #}
+    {# Copyright notice #}
   </body>
 </html>
