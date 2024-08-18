@@ -53,6 +53,13 @@ class MediaObject(models.Model):
     # ? Runtime is derivable, perhaps derive it?
 
 
+class WatchItem(models.Model):
+    user = models.ForeignKey(FlickerUser, on_delete=models.CASCADE)
+    media = models.ForeignKey(MediaObject, on_delete=models.CASCADE)
+    date = models.DateField()
+    # Reasonable place to store watch progress if it is stored at all.
+
+
 class Genre(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
