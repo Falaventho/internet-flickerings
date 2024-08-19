@@ -13,3 +13,17 @@
 .submit-button:hover {
   transform: scale(1.1);
 }
+
+.login-error {
+  color: rgb(253, 253, 253);
+  border: 1px solid red;
+  border-radius: 5px;
+  padding: 5px 7px;
+  width: 300px;
+}
+
+.noselect {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}

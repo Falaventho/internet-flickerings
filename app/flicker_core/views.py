@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from flicker_core.models import MediaObject
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required
 def home(request):
     return redirect('browse')
 
 
+@login_required
 def browse(request):
     example_cards = MediaObject.objects.all()
 
@@ -30,6 +33,7 @@ def browse(request):
     return render(request, 'flicker_core/browse.html', {'sections': sections})
 
 
+@login_required
 def watch(request, media_id):
     media_object = MediaObject.objects.get(id=media_id)
 
