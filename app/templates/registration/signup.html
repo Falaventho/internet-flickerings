@@ -1,0 +1,29 @@
+{% extends 'registration/base.html' %}
+
+{% block content %}
+  {% if form.errors %}
+    <p class="login-error">ERROR - DEBUG</p>
+    <br />
+  {% endif %}
+
+  <form action="{% url 'signup' %}" method="post" class="w3-container w3-center">
+    {% csrf_token %}
+    <div class="form-section">
+      <p class="w3-text-deep-orange w3-xlarge">{{ form.username.label }}</p>
+      <p>{{ form.username }}</p>
+    </div>
+    <div class="form-section">
+      <p class="w3-text-deep-orange w3-xlarge">{{ form.email.label }}</p>
+      <p>{{ form.email }}</p>
+    </div>
+    <div class="form-section">
+      <p class="w3-text-deep-orange w3-xlarge">{{ form.password1.label }}</p>
+      <p>{{ form.password1 }}</p>
+    </div>
+    <div class="form-section">
+      <p class="w3-text-deep-orange w3-xlarge">{{ form.password2.label }}</p>
+      <p>{{ form.password2 }}</p>
+    </div>
+    <input class="w3-button w3-deep-orange w3-text-black w3-hover-deep-orange w3-hover-text-black submit-button w3-large w3-round" type="submit" value="Submit" />
+  </form>
+{% endblock %}

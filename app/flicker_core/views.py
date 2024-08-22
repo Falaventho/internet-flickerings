@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from flicker_core.models import MediaObject
 from django.contrib.auth.decorators import login_required
+from flicker_core.forms import FlickerUserCreationForm
 
 
 # Create your views here.
@@ -47,3 +48,15 @@ def watch(request, media_id):
         'title': media_object.title,
         'content_uri': media_object.content_uri,
     })
+
+
+def signup(request):
+    if request.method == "POST":
+        form = FlickerUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("browse")
+    else:
+        form = FlickerUserCreationForm()
+
+    return render(request, "registration/signup.html", {"form": form})

@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('browse/', views.browse, name='browse'),
     path('watch/<int:media_id>/', views.watch, name='watch'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
