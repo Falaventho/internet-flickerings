@@ -16,6 +16,7 @@ services:
       - DB_PASS=${DB_PASS}
       - TEST_FLAG=${TEST_FLAG}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - LOCAL_SERV=${LOCAL_SERV}
     depends_on:
       - db
 

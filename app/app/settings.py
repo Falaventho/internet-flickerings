@@ -64,7 +64,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,6 +76,10 @@ TEMPLATES = [
         },
     },
 ]
+# TODO research project level static file implementations. It seems illogical to make global templates rely on app-level static files.
+# STATICFIILES_DIRS = [
+#    BASE_DIR / 'static',
+# ]
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
@@ -138,3 +142,7 @@ MEDIA_ROOT = '/vol/web/media'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

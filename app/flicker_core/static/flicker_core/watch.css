@@ -47,3 +47,19 @@
 #back-btn {
   width: 75px !important;
 }
+
+#fullscreen-btn {
+  padding-right: 75px;
+}
+
+@media screen and (min-width: 801px) {
+  .overlay-button {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: 1367px) {
+  .overlay-button {
+    font-size: 48px;
+  }
+}

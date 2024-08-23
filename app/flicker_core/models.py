@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class FlickerUser(AbstractUser):
-    pass
+    subscriber = models.BooleanField(default=False)
 
     def __str__(self):
         return self.username
@@ -51,6 +51,13 @@ class MediaObject(models.Model):
         return self.title
 
     # ? Runtime is derivable, perhaps derive it?
+
+
+class WatchItem(models.Model):
+    user = models.ForeignKey(FlickerUser, on_delete=models.CASCADE)
+    media = models.ForeignKey(MediaObject, on_delete=models.CASCADE)
+    date = models.DateField()
+    # Reasonable place to store watch progress if it is stored at all.
 
 
 class Genre(models.Model):
