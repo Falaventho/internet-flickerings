@@ -23,7 +23,7 @@ User Profiles
 
 Features
 
-- Add standard quality-of-life features expected of a streaming service (video scrubber, interval skips, episode views, filter, search, info cards, etc.)
+- Add standard quality-of-life features expected of a streaming service (video scrubber, interval skips, filter, search, info cards, etc.)
 - Resolve any backend/architecture issues preventing planned features and deployment
 
 ## Phase 3: Deployment and Beyond
