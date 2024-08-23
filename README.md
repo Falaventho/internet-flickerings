@@ -1,5 +1,5 @@
 # Internet Flickerings
-
+![pipeline](https://gitlab.com/Falaventho/internet-flickerings/badges/main/pipeline.svg?style=flat-square)
 ## Project Description
 
 Internet Flickerings (INTFLX) is a Netflix clone build with Django, PostgreSQL, Nginx, and Docker. This project is both the pathway to and product of my understanding of these technologies and their associated languages.
