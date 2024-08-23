@@ -25,7 +25,6 @@
       <input type="hidden" name="next" value="{{ next }}" />
     </form>
 
-    {# Assumes you set up the password_reset view #}
     <p class="w3-container">
       <a href="{% url 'password_reset' %}">Forgot password?</a><br /><br />
       <a href="{% url 'signup' %}">Create an account</a>
