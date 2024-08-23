@@ -51,12 +51,15 @@ def watch(request, media_id):
 
 
 def signup(request):
+
     if request.method == "POST":
         form = FlickerUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect("browse")
     else:
+        if request.user.is_authenticated:
+            return redirect("browse")
         form = FlickerUserCreationForm()
 
     return render(request, "registration/signup.html", {"form": form})

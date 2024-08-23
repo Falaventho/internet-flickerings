@@ -1,7 +1,7 @@
 {% extends 'registration/base.html' %}
 
 {% block content %}
-  <h1 class="w3-xxlarge w3-text-deep-orange w3-center w3-margin-top noselect"><b>INTFLX</b></h1>
+  <h1 class="w3-xxlarge w3-text-deep-orange w3-center w3-margin-top noselect login-title"><b>INTFLX</b></h1>
   <div class="w3-card w3-center login-card noselect">
     <form action="{% url 'login' %}" method="post" class="w3-container w3-center">
       {% csrf_token %}
