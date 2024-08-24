@@ -17,7 +17,7 @@
       </video>
     {% endwith %}
 
-    <div class="overlay">
+    <div id="overlay" class="overlay showing">
       <div class="overlay-topbar w3-bar">
         <button class="overlay-button w3-bar-item w3-button" id="back-btn" onclick="back();"><i class="fa-solid fa-arrow-left w3-left w3-margin-left"></i></button>
       </div>
@@ -43,18 +43,38 @@
     </div>
 
     <script>
-      const video = document.getElementById('video-player')
+      const video = document.querySelector('#video-player')
+      const overlay = document.querySelector('#overlay')
       let play_btn = document.getElementById('play-btn')
       let mute_btn = document.getElementById('mute-btn')
       let fullscreen_btn = document.getElementById('fullscreen-btn')
       let body = document.getElementById('body')
+      let movement_flag = true
       
       let duration = video.duration
-      
-      video.addEventListener('ended', (event) => {
-        video_state = 'ended'
+      let last_movement = video.addEventListener('ended', (event) => {
         play_btn.innerHTML = '<i class="fa-solid fa-rotate-left"></i>'
       })
+      
+      overlay.addEventListener('mousemove', (event) => {
+        // When the mouse moves, what do we want to have happen?
+        // The overlay element should have a class toggled on that makes it visible instantly
+        // After some delay, the class should be toggled off and the overlay shoud become invisble slowly
+        // Movement should reset this delay
+      
+        overlay.classList.toggle('showing', true)
+        movement_flag = true
+      })
+      
+      async function checkOverlay() {
+        if (movement_flag) {
+          movement_flag = false
+        } else {
+          overlay.classList.toggle('showing', false)
+        }
+      
+        setTimeout(checkOverlay, 2500)
+      }
       
       function playPause() {
         if (video.paused) {
@@ -97,6 +117,8 @@
           body.requestFullscreen()
         }
       }
+      
+      checkOverlay()
     </script>
   </body>
 </html>
