@@ -43,13 +43,18 @@
     </div>
 
     <script>
-      let video = document.getElementById('video-player')
+      const video = document.getElementById('video-player')
       let play_btn = document.getElementById('play-btn')
       let mute_btn = document.getElementById('mute-btn')
       let fullscreen_btn = document.getElementById('fullscreen-btn')
       let body = document.getElementById('body')
       
       let duration = video.duration
+      
+      video.addEventListener('ended', (event) => {
+        video_state = 'ended'
+        play_btn.innerHTML = '<i class="fa-solid fa-rotate-left"></i>'
+      })
       
       function playPause() {
         if (video.paused) {
