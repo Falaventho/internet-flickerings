@@ -33,7 +33,10 @@
         <!-- Mute 🔇: &#x1F507; Speaker 🔈:&#x1F508; One Wave 🔉: &#x1F509; Three Wave 🔊: &#x1F50A; -->
 
         <div class="bar-third w3-bar-item">
-          <h1 class="title w3-bar-item w3-xxlarge w3-center">{{ title }}</h1>
+          <h1 class="title w3-xxlarge w3-center">{{ title }}</h1>
+          <div class="w3-black w3-center">
+            <div class="progress-bar">25%</div>
+          </div>
         </div>
 
         <div class="bar-third right-buttons w3-fourth w3-bar-item w3-right">
@@ -50,18 +53,16 @@
       let fullscreen_btn = document.getElementById('fullscreen-btn')
       let body = document.getElementById('body')
       let movement_flag = true
+      let hold_overlay = true
       
       let duration = video.duration
-      let last_movement = video.addEventListener('ended', (event) => {
+      video.addEventListener('ended', (event) => {
         play_btn.innerHTML = '<i class="fa-solid fa-rotate-left"></i>'
       })
       
+      // This can be handled with an increment to make collisions less problematic
+      // It can also remove the need for a setTimeout loop
       overlay.addEventListener('mousemove', (event) => {
-        // When the mouse moves, what do we want to have happen?
-        // The overlay element should have a class toggled on that makes it visible instantly
-        // After some delay, the class should be toggled off and the overlay shoud become invisble slowly
-        // Movement should reset this delay
-      
         overlay.classList.toggle('showing', true)
         movement_flag = true
       })
@@ -69,20 +70,22 @@
       async function checkOverlay() {
         if (movement_flag) {
           movement_flag = false
-        } else {
+        } else if (!hold_overlay) {
           overlay.classList.toggle('showing', false)
         }
       
-        setTimeout(checkOverlay, 2500)
+        setTimeout(checkOverlay, 2000)
       }
       
       function playPause() {
         if (video.paused) {
           video.play()
           play_btn.innerHTML = '<i class="fa-solid fa-pause"></i>'
+          hold_overlay = false
         } else {
           video.pause()
           play_btn.innerHTML = '<i class="fa-solid fa-play"></i>'
+          hold_overlay = true
         }
       }
       

@@ -50,6 +50,13 @@
   user-select: none;
 }
 
+.progress-bar {
+  color: red;
+  background-color: #f1f1f1;
+  width: 25%;
+  height: 24px;
+}
+
 #back-btn {
   width: 75px !important;
 }
