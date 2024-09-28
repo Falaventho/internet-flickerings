@@ -21,10 +21,16 @@ User Profiles
 - Allow users to create and manage personal profiles.
 - Add support for profile customization.
 
-Features
+Video Player Upgrades
 
-- Add standard quality-of-life features expected of a streaming service (video scrubber, interval skips, filter, search, info cards, etc.)
-- Resolve any backend/architecture issues preventing planned features and deployment
+- Add a progress bar for video progress feedback.
+- Add slider for volume selection.
+- Add increment/decrement buttons.
+
+Browse Upgrades
+
+- Add rudimentary search functionality.
+- Filter browse view by type or tag using nav bar buttons.
 
 ## Phase 3: Deployment and Beyond
 
