@@ -114,3 +114,6 @@ cython_debug/
 # Hefty static files
 flicker_files/
 .static-data/
+
+# Editor/workspace settings
+.vscode/
