@@ -10,23 +10,27 @@
   </head>
   <body class="w3-black">
     {# TOPBAR: home, genres/types, search, account #}
-    <div class="topbar w3-bar w3-black w3-xlarge">
-      <a href="#" class="w3-bar-item w3-button w3-text-deep-orange w3-hover-black w3-border-black w3-hover-border-white w3-hover-text-deep-orange homelink"><b>INTFLX</b></a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black navlink movielink">Movies</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black navlink showlink">Shows</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black navlink searchlink">Search</a>
+    <div class="topbar">
+      <div class="topbar-left">
+        <a href="#" class="w3-bar-item w3-button w3-text-deep-orange w3-hover-black w3-border-black w3-hover-border-white w3-hover-text-deep-orange homelink"><b>INTFLX</b></a>
+        <a href="#" class="navlink movielink">Movies</a>
+        <a href="#" class="navlink showlink">Shows</a>
+        <a href="#" class="navlink searchlink">Search</a>
+      </div>
 
-      {% if user.is_authenticated %}
-        {# <p>User: {{ user.get_username }}</p> #}
-        <form id="logout-form" method="post" action="{% url 'logout' %}">
-          {% csrf_token %}
-          <button type="submit" class="w3-bar-item w3-button w3-hover-black navlink logoutlink w3-right">Logout</button>
-        </form>
-      {% else %}
-        <a href="{% url 'login' %}?next={{ request.path }}" class="w3-bar-item w3-button w3-hover-black navlink accountlink w3-right">Login</a>
-      {% endif %}
+      <div class="topbar-right">
+        {% if user.is_authenticated %}
+          {# <p>User: {{ user.get_username }}</p> #}
+          <form id="logout-form" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="logoutbutton navlink logoutlink">Logout</button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}?next={{ request.path }}" class="navlink accountlink">Login</a>
+        {% endif %}
 
-      <a href="#" class="w3-bar-item w3-button w3-hover-black navlink accountlink w3-right">Account</a>
+        <a href="#" class="navlink accountlink">Account</a>
+      </div>
     </div>
     {# Array of movies header - list, header - list, etc. #}
     <div class="w3-container">
