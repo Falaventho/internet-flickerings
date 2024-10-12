@@ -1,3 +1,8 @@
+body {
+  background-color: black;
+  color: white;
+}
+
 .player {
   min-width: 100%;
   min-height: 100%;
@@ -22,26 +27,51 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .overlay-button {
   transition: ease 150ms;
-  width: 15% !important;
+  width: 15%;
 }
 
 .overlay-button:hover {
-  background: transparent !important;
-  color: white !important;
   transform: scale(1.2);
 }
 
+.title {
+  max-width: fit-content;
+}
+
 .bar-third {
-  width: 33% !important;
+  width: 33%;
+  display: flex;
+  flex-direction: row;
+}
+
+.left-buttons {
+  justify-content: left;
+}
+
+.title-bar {
+  justify-content: center;
+}
+
+.right-buttons {
+  justify-content: right;
 }
 
 .title {
   width: 100% !important;
   user-select: none;
+}
+
+.btn-transparent {
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 #back-btn {
