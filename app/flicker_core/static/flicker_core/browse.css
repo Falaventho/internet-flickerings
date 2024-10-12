@@ -32,6 +32,14 @@
   outline: inherit;
 }
 
+.homelink {
+  color: orangered;
+}
+
 .navlink:hover {
   transform: scale(1.1);
+}
+
+.homelink:hover {
+  transform: none;
 }
