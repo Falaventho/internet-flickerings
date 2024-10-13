@@ -57,6 +57,7 @@
 }
 
 .login-title {
+  font-weight: bold;
   padding-top: 50px;
   font-size: 4em;
   color: orangered;
@@ -67,7 +68,13 @@
 
 .orange-text {
   color: orangered;
-  font-size: 1.4em;
+  font-size: 1.2em;
+}
+
+.create-text {
+  color: orangered;
+  text-align: center;
+  font-size: 2em;
 }
 
 .reset-message {

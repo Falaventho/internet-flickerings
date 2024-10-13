@@ -1,7 +1,7 @@
 {% extends 'registration/base.html' %}
 
 {% block content %}
-  <h1 class="login-title noselect"><b>INTFLX</b></h1>
+  <h1 class="login-title noselect">INTFLX</h1>
   <div class="auth-card noselect">
     <form action="{% url 'login' %}" method="post" class="container">
       {% csrf_token %}
