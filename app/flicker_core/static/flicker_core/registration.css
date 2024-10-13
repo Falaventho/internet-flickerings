@@ -17,10 +17,27 @@
 
 .form-section {
   padding-bottom: 10px;
+  font-size: large;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
 }
 
 .submit-button {
   font-weight: bold;
+  color: black;
+  font-size: 1.8em;
+  background-color: orangered;
+  border-color: transparent;
+  border-radius: 5px;
+  padding: 0 10px;
+  transition: ease-in-out 50ms;
+  cursor: pointer;
 }
 
 .submit-button:hover {
@@ -42,6 +59,10 @@
   text-align: center;
   margin-left: auto;
   margin-top: 50px;
+}
+
+.orange-text {
+  color: orangered;
 }
 
 .reset-message {
