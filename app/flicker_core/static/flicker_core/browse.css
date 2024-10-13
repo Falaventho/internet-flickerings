@@ -1,7 +1,63 @@
+.topbar {
+  width: 100%;
+  height: 75px;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: row;
+}
+
+.topbar-left {
+  display: flex;
+  flex-direction: row;
+  margin-right: auto;
+}
+
+.topbar-right {
+  display: flex;
+  flex-direction: row;
+}
+
+.logoutlink {
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
 .navlink {
   transition: ease 100ms;
+  text-align: center;
+  padding: 10px;
+}
+
+.homelink {
+  color: orangered;
 }
 
 .navlink:hover {
   transform: scale(1.1);
+}
+
+.homelink:hover {
+  transform: none;
+}
+
+.section-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  scrollbar-width: none; /* The magic words for chrome/safari/firefox alike */
+}
+
+.media-card {
+  min-width: 200px;
+  width: 200px;
+  padding: 0 10px;
+}
+
+.thumbnail-img {
+  width: 100%;
 }
