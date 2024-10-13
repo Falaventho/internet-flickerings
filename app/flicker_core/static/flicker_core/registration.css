@@ -37,6 +37,11 @@
 
 .login-title {
   padding-top: 50px;
+  font-size: 4em;
+  color: orangered;
+  text-align: center;
+  margin-left: auto;
+  margin-top: 50px;
 }
 
 .reset-message {
