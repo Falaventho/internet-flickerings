@@ -40,6 +40,10 @@
   cursor: pointer;
 }
 
+.reset-button {
+  font-size: 1.4em;
+}
+
 .submit-button:hover {
   transform: scale(1.1);
 }
